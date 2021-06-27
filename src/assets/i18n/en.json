@@ -1,0 +1,13 @@
+{
+  "HOME_PAGE":"Home Page",
+  "SUBSCRIPTION_REQUESTS":"Subscription Requests",
+  "VIEW_SUB_REQ":"Click to view Subscription Requests",
+  "SUBSCRIPTION_MANAGEMENT":"Subscription Management",
+  "EMPLOYEES":"Employees",
+  "JOBS":"Jobs",
+  "SERVICES":"Services",
+  "VEHCILE_SIZE":"Vehcile size",
+  "VEHCILE_SIZE_DESC":"The size of the vehciles that used for transportation",
+  "SUBSCRIPTION_MGMT":"Managing Subsriptions",
+  "SUBSCRIPTION_MGMT_DESC":"To activate Or deactivate a subscription"
+}
