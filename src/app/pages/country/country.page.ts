@@ -12,7 +12,5 @@ export class CountryPage implements OnInit {
 
   ngOnInit() {
   }
-  goHome(){
-    this.router.navigate(['/','home']);
-  }
+
 }

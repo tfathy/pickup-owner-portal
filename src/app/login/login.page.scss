@@ -1,0 +1,25 @@
+.app-logo{
+  background-image: url("/assets/icon/user.png");
+  height: 150px;
+  width: 150px;
+  background-repeat: no-repeat;
+  border-radius: 320px;
+  background-position: center;
+  background-size: contain;
+  background-color: #e3f8ff;
+  margin: 30px auto;
+}
+ion-item{
+  --padding-bottom:20px;
+}
+ion-button{
+  --margin-top:20px;
+}
+
+ion-toggle {
+  --background: #000;
+  --background-checked: #7a49a5;
+
+  --handle-background: #7a49a5;
+  --handle-background-checked: #000;
+}

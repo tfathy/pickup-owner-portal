@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { HomeButtonComponent } from './components/home-button/home-button.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [HomeButtonComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,7 +21,8 @@ import { TranslateModule } from '@ngx-translate/core';
     HttpClientModule,
     IonicModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    HomeButtonComponent
   ],
 })
 export class SharedModule {}

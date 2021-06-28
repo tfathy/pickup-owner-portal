@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { CurrencyPageRoutingModule } from './currency-routing.module';
 
 import { CurrencyPage } from './currency.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CurrencyPageRoutingModule
+    CurrencyPageRoutingModule,
+    SharedModule
   ],
   declarations: [CurrencyPage]
 })
