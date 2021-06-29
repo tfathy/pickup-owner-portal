@@ -17,9 +17,13 @@ ion-button{
 }
 
 ion-toggle {
-  --background: #000;
-  --background-checked: #7a49a5;
+  --background: rgba(203, 221, 199, 0.247);
+  --background-checked: #89a549;
 
-  --handle-background: #7a49a5;
-  --handle-background-checked: #000;
+  --handle-background: #c3b4d1;
+  --handle-background-checked: rgb(85, 109, 57);
+}
+.error-msg{
+  border: red;
+  border-width: 10px;
 }
