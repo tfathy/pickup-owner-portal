@@ -6,6 +6,10 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { HomeButtonComponent } from './components/home-button/home-button.component';
 
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [HomeButtonComponent],
   imports: [
@@ -17,6 +21,9 @@ import { HomeButtonComponent } from './components/home-button/home-button.compon
     TranslateModule
   ],
   exports: [
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
     FormsModule,
     HttpClientModule,
     IonicModule,
