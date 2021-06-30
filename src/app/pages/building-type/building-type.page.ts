@@ -1,10 +1,10 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { LoadingController, ModalController } from '@ionic/angular';
-import { authResponse, readStorage } from 'src/app/shared/shared-util';
+import { LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { authToken, readStorage } from 'src/app/shared/shared-util';
 import { BuildingTypeModel } from './building-type.model';
 import { BuildingTypeService } from './building-type.service';
 import { BuildingTypeComponent } from './components/building-type/building-type.component';
@@ -21,14 +21,16 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   empName: string;
-  authToken: authResponse;
+  authToken: authToken;
   displayedColumns: string[] = ['id', 'descEn', 'descAr', 'activeFlag', 'edit'];
   dataSource = new MatTableDataSource<BuildingTypeModel>(ELEMENT_DATA);
   selection = new SelectionModel<BuildingTypeModel>(false, []);
   constructor(
     private modalCtrl: ModalController,
     private service: BuildingTypeService,
-    private loadingCtrl: LoadingController
+    private loadingCtrl: LoadingController,
+    private toast: ToastController
+
   ) {}
 
   async ngOnInit() {
@@ -57,7 +59,20 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
-  editRow(model) {}
+  editRow(body: BuildingTypeModel) {
+    this.modalCtrl.create({
+      component: BuildingTypeComponent,
+      componentProps:{model: body,recordStatus: 'update'},
+      cssClass: 'modal-class'
+    }).then(modalElement=>{
+      modalElement.present();
+      modalElement.onDidDismiss().then(dismissedData=>{
+        if(dismissedData.data.saved){
+          this.showToast('Transaction Saved');
+        }
+      });
+    });
+  }
   async doRefresh(event) {
     this.authToken = await readStorage('authData');
     this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
@@ -67,11 +82,31 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
     });
   }
   create(){
+    const body = new BuildingTypeModel();
+    body.activeFlag = 'Y';
     this.modalCtrl.create({
       component: BuildingTypeComponent,
-      componentProps:{}
-    }).then(mdalElmnt=>{
-      mdalElmnt.present();
+      componentProps:{model: body,recordStatus: 'insert'},
+      cssClass: 'modal-class'
+    }).then(modalElement=>{
+      modalElement.present();
+      modalElement.onDidDismiss().then(dismissedData=>{
+        if(dismissedData.data.saved){
+          this.showToast('Transaction Saved');
+        }
+      });
     });
+  }
+
+  public  showToast(msg: string) {
+    this.toast
+      .create({
+        message: msg,
+        position: 'middle',
+        duration: 1000,
+      })
+      .then((toastCtrl) => {
+        toastCtrl.present();
+      });
   }
 }

@@ -9,16 +9,20 @@ import { HomeButtonComponent } from './components/home-button/home-button.compon
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { BuildingTypeComponent } from '../pages/building-type/components/building-type/building-type.component';
+import { CategoryComponent } from '../pages/category/category/category.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
-  declarations: [HomeButtonComponent],
+  declarations: [HomeButtonComponent,BuildingTypeComponent,CategoryComponent],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     IonicModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    DataTablesModule
   ],
   exports: [
     MatTableModule,
@@ -29,7 +33,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     IonicModule,
     ReactiveFormsModule,
     TranslateModule,
-    HomeButtonComponent
+    DataTablesModule,
+    HomeButtonComponent,
+    CategoryComponent
   ],
 })
 export class SharedModule {}

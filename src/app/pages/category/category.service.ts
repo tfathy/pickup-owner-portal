@@ -3,53 +3,55 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BuildingTypeModel } from './building-type.model';
+import { CategoryModel } from './category-model';
+
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class BuildingTypeService {
-  constructor(private http: HttpClient) {}
+export class CategoryService {
 
-  findAll(token: string): Observable<BuildingTypeModel[]> {
+  constructor(private http: HttpClient) { }
+
+  findAll(token: string): Observable<CategoryModel[]> {
     const headerInfo = new HttpHeaders({
       // eslint-disable-next-line @typescript-eslint/naming-convention
       Authorization: token,
     });
 
-    return this.http.get<BuildingTypeModel[]>(
-      `${environment.backendUrl}/sys-owner-app/def/location-type`,
+    return this.http.get<CategoryModel[]>(
+      `${environment.backendUrl}/sys-owner-app/def/item-category`,
       { headers: headerInfo }
     );
   }
 
-  findById(token: string, id): Observable<BuildingTypeModel> {
+  findById(token: string, id): Observable<CategoryModel> {
     const headerInfo = new HttpHeaders({ Authorization: token });
-    return this.http.get<BuildingTypeModel>(
-      `${environment.backendUrl}/sys-owner-app/def/location-type/${id}`
+    return this.http.get<CategoryModel>(
+      `${environment.backendUrl}/sys-owner-app/def/item-category/${id}`
     );
   }
 
   create(
     token: string,
-    body: BuildingTypeModel
-  ): Observable<BuildingTypeModel> {
+    body: CategoryModel
+  ): Observable<CategoryModel> {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    return this.http.post<BuildingTypeModel>(
-      `${environment.backendUrl}/sys-owner-app/def/location-type`,
+    return this.http.post<CategoryModel>(
+      `${environment.backendUrl}/sys-owner-app/def/item-category`,
       body,
       { headers: headerInfo }
     );
   }
 
-  update(token: string, body: BuildingTypeModel, id) {
+  update(token: string, body: CategoryModel, id) {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    return this.http.put<BuildingTypeModel>(
-      `${environment.backendUrl}/sys-owner-app/def/location-type/${id}`,
+    return this.http.put<CategoryModel>(
+      `${environment.backendUrl}/sys-owner-app/def/item-category/${id}`,
       body,
       { headers: headerInfo }
     );
@@ -60,7 +62,7 @@ export class BuildingTypeService {
       Authorization: token,
     });
     return this.http.delete<string>(
-      `${environment.backendUrl}/sys-owner-app/def/location-type/${id}`,
+      `${environment.backendUrl}/sys-owner-app/def/item-category/${id}`,
       {
         headers: headerInfo,
       }

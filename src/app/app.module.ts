@@ -13,6 +13,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PickupAppInterceptor } from './shared/PickUpAppInterceptor';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions

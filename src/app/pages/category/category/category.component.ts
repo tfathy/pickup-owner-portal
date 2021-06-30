@@ -1,24 +1,23 @@
-/* eslint-disable @typescript-eslint/member-ordering */
-import {  Component, Input, OnInit } from '@angular/core';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController, LoadingController } from '@ionic/angular';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
-import { BuildingTypeModel } from '../../building-type.model';
-import { BuildingTypeService } from '../../building-type.service';
+import { CategoryModel } from '../category-model';
+import { CategoryService } from '../category.service';
 
 @Component({
-  selector: 'app-building-type',
-  templateUrl: './building-type.component.html',
-  styleUrls: ['./building-type.component.scss'],
+  selector: 'app-category',
+  templateUrl: './category.component.html',
+  styleUrls: ['./category.component.scss'],
 })
-export class BuildingTypeComponent implements OnInit {
+export class CategoryComponent implements OnInit {
   token: authToken;
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  @Input() model: BuildingTypeModel;
+  @Input() model: CategoryModel;
   @Input() recordStatus: string;
   constructor(
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
-    private service: BuildingTypeService
+    private service: CategoryService
   ) {}
 
   async ngOnInit() {
@@ -69,5 +68,15 @@ export class BuildingTypeComponent implements OnInit {
     this.modalCtrl.dismiss({
       saved: false,
     });
+  }
+  disableRecord(){
+    this.model.activeFlag = 'N';
+    this.recordStatus = 'update';
+    this.save();
+  }
+  enableRecord(){
+    this.model.activeFlag = 'Y';
+    this.recordStatus = 'update';
+    this.save();
   }
 }
