@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { BuildingTypePage } from './building-type.page';
+import { BuildingTypeComponent } from './building-type.component';
 
-describe('BuildingTypePage', () => {
-  let component: BuildingTypePage;
-  let fixture: ComponentFixture<BuildingTypePage>;
+describe('BuildingTypeComponent', () => {
+  let component: BuildingTypeComponent;
+  let fixture: ComponentFixture<BuildingTypeComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ BuildingTypePage ],
+      declarations: [ BuildingTypeComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BuildingTypePage);
+    fixture = TestBed.createComponent(BuildingTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

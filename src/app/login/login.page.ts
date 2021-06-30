@@ -13,12 +13,17 @@ export class LoginPage implements OnInit {
   lang = 'en';
   toggled = true;
   form;
+<<<<<<< HEAD
   constructor(
     private toast: ToastController,
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private router: Router
   ) {}
+=======
+  constructor(private toast: ToastController, private authService: AuthService, private loadingCtrl: LoadingController,
+    private router: Router) {}
+>>>>>>> 3199c4de91b94520f2a41a4b8fd91a3e722bae7b
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -27,6 +32,7 @@ export class LoginPage implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   login() {
     this.loadingCtrl
       .create({
@@ -40,6 +46,20 @@ export class LoginPage implements OnInit {
             loadingElmnt.dismiss();
             console.log(loginResponse);
           });
+=======
+  login(){
+    this.loadingCtrl.create({
+      message: 'Log in .... please wait'
+    }).then(loadingElmnt=>{
+      loadingElmnt.present();
+      this.authService.authLogin(this.username.value,this.password.value).subscribe(loginResponse=>{
+        loadingElmnt.dismiss();
+        console.log(loginResponse);
+        this.router.navigate(['/','home']);
+      },error=>{
+        loadingElmnt.dismiss();
+        console.log(error);
+>>>>>>> 3199c4de91b94520f2a41a4b8fd91a3e722bae7b
       });
   }
 

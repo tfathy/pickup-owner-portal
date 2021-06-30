@@ -12,6 +12,7 @@ import { TranslateModule ,TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { PickupAppInterceptor } from './shared/PickUpAppInterceptor';
 import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // eslint-disable-next-line prefer-arrow/prefer-arrow-functions
@@ -30,7 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient],
       },
-    })
+    }), BrowserAnimationsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: PickupAppInterceptor, multi: true }],

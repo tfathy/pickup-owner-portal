@@ -38,7 +38,7 @@ export class AuthService implements OnDestroy{
       .post<any>(
         `${environment.backendUrl}/sys-owner-security/owner-auth/login`,
         {
-          userEmail: loginEmail,
+          email: loginEmail,
           password: loginPassword,
         },
         { observe: 'response' }
