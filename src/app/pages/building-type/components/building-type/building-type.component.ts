@@ -70,4 +70,14 @@ export class BuildingTypeComponent implements OnInit {
       saved: false,
     });
   }
+  disableRecord(){
+    this.model.activeFlag = 'N';
+    this.recordStatus = 'update';
+    this.save();
+  }
+  enableRecord(){
+    this.model.activeFlag = 'Y';
+    this.recordStatus = 'update';
+    this.save();
+  }
 }

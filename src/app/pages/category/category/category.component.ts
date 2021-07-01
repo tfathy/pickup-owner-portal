@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
 import { authToken, readStorage } from 'src/app/shared/shared-util';

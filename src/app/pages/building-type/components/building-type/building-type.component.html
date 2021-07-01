@@ -29,3 +29,11 @@
 
 </ion-grid>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button *ngIf="model.activeFlag==='Y' && recordStatus==='update'"  (click)="disableRecord()"
+                color="danger" expand="block" fill="outline">{{"DISABLE"|translate}}</ion-button>
+    <ion-button *ngIf="model.activeFlag==='N' && recordStatus==='update'" (click)="enableRecord()"
+                color="primary" expand="block" fill="outline">{{"ACTIVATE"|translate}}</ion-button>
+  </ion-toolbar>
+</ion-footer>
