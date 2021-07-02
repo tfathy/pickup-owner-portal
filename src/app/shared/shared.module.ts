@@ -12,9 +12,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BuildingTypeComponent } from '../pages/building-type/components/building-type/building-type.component';
 import { CategoryComponent } from '../pages/category/category/category.component';
 import { DataTablesModule } from 'angular-datatables';
+import { CountryComponent } from '../pages/country/country/country.component';
 
 @NgModule({
-  declarations: [HomeButtonComponent,BuildingTypeComponent,CategoryComponent],
+  declarations: [HomeButtonComponent,BuildingTypeComponent,CategoryComponent,CountryComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -35,7 +36,8 @@ import { DataTablesModule } from 'angular-datatables';
     TranslateModule,
     DataTablesModule,
     HomeButtonComponent,
-    CategoryComponent
+    CategoryComponent,
+    CountryComponent
   ],
 })
 export class SharedModule {}
