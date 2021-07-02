@@ -41,7 +41,7 @@
     <!-- desce Column -->
     <ng-container matColumnDef="activeFlag">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"IS_ENABLED"|translate}} </th>
-      <td mat-cell *matCellDef="let element"> {{element.activeFlag}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.activeFlag==='Y'?'Yes':'No'}} </td>
     </ng-container>
     <!-- Edit-->
     <ng-container matColumnDef="edit" class="table-active">
