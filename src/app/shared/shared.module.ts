@@ -13,9 +13,18 @@ import { BuildingTypeComponent } from '../pages/building-type/components/buildin
 import { CategoryComponent } from '../pages/category/category/category.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CountryComponent } from '../pages/country/country/country.component';
+import { CurrencyComponent } from '../pages/currency/currency/currency.component';
+import { VclTypeComponent } from '../pages/vcl-type/vcl-type/vcl-type.component';
 
 @NgModule({
-  declarations: [HomeButtonComponent,BuildingTypeComponent,CategoryComponent,CountryComponent],
+  declarations: [
+    HomeButtonComponent,
+    BuildingTypeComponent,
+    CategoryComponent,
+    CountryComponent,
+    CurrencyComponent,
+    VclTypeComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,7 +32,7 @@ import { CountryComponent } from '../pages/country/country/country.component';
     IonicModule,
     ReactiveFormsModule,
     TranslateModule,
-    DataTablesModule
+    DataTablesModule,
   ],
   exports: [
     MatTableModule,
@@ -37,7 +46,9 @@ import { CountryComponent } from '../pages/country/country/country.component';
     DataTablesModule,
     HomeButtonComponent,
     CategoryComponent,
-    CountryComponent
+    CountryComponent,
+    CurrencyComponent,
+    VclTypeComponent
   ],
 })
 export class SharedModule {}

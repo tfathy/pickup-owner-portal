@@ -12,10 +12,24 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col size="6">
         <ion-item>
           <ion-label position="floating">{{"CODE"|translate}} </ion-label>
           <ion-input name="code" [(ngModel)]="model.code"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="floating">{{"CURRENCY_SYMBOL"|translate}} </ion-label>
+          <ion-input name="curSymbol" [(ngModel)]="model.curSymbol"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{"DECIMAL_POINT"|translate}} </ion-label>
+          <ion-input name="decimilPoint" [(ngModel)]="model.decimilPoint"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>

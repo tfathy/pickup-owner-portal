@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { JobPage } from './job.page';
+import { VclTypeComponent } from './vcl-type.component';
 
-describe('JobPage', () => {
-  let component: JobPage;
-  let fixture: ComponentFixture<JobPage>;
+describe('VclTypeComponent', () => {
+  let component: VclTypeComponent;
+  let fixture: ComponentFixture<VclTypeComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ JobPage ],
+      declarations: [ VclTypeComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(JobPage);
+    fixture = TestBed.createComponent(VclTypeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

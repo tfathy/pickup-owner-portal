@@ -11,6 +11,8 @@
   "DESC_AR":"Arabic Description",
   "DESC_EN":"English Description",
   "IS_ENABLED":"Is Enaabled?",
+  "CURRENCY_SYMBOL":"Currency Symbol",
+  "DECIMAL_POINT":"Decimil Point",
   "HOME_PAGE": "Home Page",
   "SUBSCRIPTION_REQUESTS": "Subscription Requests",
   "VIEW_SUB_REQ": "Click to view Subscription Requests",
