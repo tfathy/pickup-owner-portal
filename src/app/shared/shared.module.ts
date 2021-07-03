@@ -19,6 +19,7 @@ import { UomComponent } from '../pages/uom/uom/uom.component';
 import { PayMethodComponent } from '../pages/pay-method/pay-method/pay-method.component';
 import { ServicesComponent } from '../pages/services/services/services.component';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { ItemsComponent } from '../pages/items/items/items.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     UomComponent,
     PayMethodComponent,
     ServicesComponent,
+    ItemsComponent
   ],
   imports: [
     CommonModule,
@@ -61,6 +63,7 @@ import { IonicSelectableModule } from 'ionic-selectable';
     UomComponent,
     PayMethodComponent,
     ServicesComponent,
+    ItemsComponent
   ],
 })
 export class SharedModule {}
