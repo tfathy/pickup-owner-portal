@@ -18,6 +18,7 @@ import { VclTypeComponent } from '../pages/vcl-type/vcl-type/vcl-type.component'
 import { UomComponent } from '../pages/uom/uom/uom.component';
 import { PayMethodComponent } from '../pages/pay-method/pay-method/pay-method.component';
 import { ServicesComponent } from '../pages/services/services/services.component';
+import { IonicSelectableModule } from 'ionic-selectable';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ServicesComponent } from '../pages/services/services/services.component
     VclTypeComponent,
     UomComponent,
     PayMethodComponent,
-    ServicesComponent
+    ServicesComponent,
   ],
   imports: [
     CommonModule,
@@ -39,6 +40,7 @@ import { ServicesComponent } from '../pages/services/services/services.component
     ReactiveFormsModule,
     TranslateModule,
     DataTablesModule,
+    IonicSelectableModule,
   ],
   exports: [
     MatTableModule,
@@ -50,6 +52,7 @@ import { ServicesComponent } from '../pages/services/services/services.component
     ReactiveFormsModule,
     TranslateModule,
     DataTablesModule,
+    IonicSelectableModule,
     HomeButtonComponent,
     CategoryComponent,
     CountryComponent,
@@ -57,7 +60,7 @@ import { ServicesComponent } from '../pages/services/services/services.component
     VclTypeComponent,
     UomComponent,
     PayMethodComponent,
-    ServicesComponent
+    ServicesComponent,
   ],
 })
 export class SharedModule {}

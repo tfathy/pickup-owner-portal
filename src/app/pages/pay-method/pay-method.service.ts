@@ -25,7 +25,7 @@ export class PayMethodService {
   findById(token: string, id): Observable<PayMethodModel> {
     const headerInfo = new HttpHeaders({ Authorization: token });
     return this.http.get<PayMethodModel>(
-      `${environment.backendUrl}/${this.update}/${id}`
+      `${environment.backendUrl}/${this.url}/${id}`
     );
   }
 

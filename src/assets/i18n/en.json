@@ -44,5 +44,7 @@
   "CURRENCY": "Currencies",
   "CURRENCY_DESC": "List of allowed currencies. Each service provider must specify the currency for his transactions.",
   "COUNTRIES": "Countries",
-  "COUNTRIES_DESC": "List of countries information"
+  "COUNTRIES_DESC": "List of countries information",
+  "SETTINGS":"Settings",
+  "COMPANY_PROFILE":"Company's profile"
 }

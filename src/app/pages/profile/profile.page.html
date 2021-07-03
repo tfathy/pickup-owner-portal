@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{"SETTINGS"|translate}}</ion-title>
+    <ion-buttons slot="start">
+      <app-home-button></app-home-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding ion-text-center">
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeMd="8" offsetMd="2">
+          <ion-toolbar color="light">
+            <ion-buttons slot="end">
+              <ion-button color="primary" (click)="updateProfile()">{{"SAVE"|translate}}
+              </ion-button>
+            </ion-buttons>
+            <ion-buttons slot="start">
+              <ion-button> {{"COMPANY_PROFILE"|translate}}</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-col>
+
+      </ion-row>
+      <ion-row>
+        <ion-col sizeMd="4" offsetMd="2">
+          <ion-item>
+            <ion-label position="stacked">{{"CODE"|translate}}</ion-label>
+            <ion-input name="code" [(ngModel)]="model.code" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeMd="4">
+          <ion-item>
+            <ion-label position="stacked">Country</ion-label>
+            <ionic-selectable [(ngModel)]="model.gnCountry" name="gnCountry" required [items]="countryList"
+              itemValueField="id" itemTextField="nameAr" [canSearch]="true">
+            </ionic-selectable>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeMd="8" offsetMd="2">
+          <ion-item>
+            <ion-label position="stacked">{{"LONG_NAME_AR"|translate}} </ion-label>
+            <ion-input name="descAr" [(ngModel)]="model.descAr"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeMd="8" offsetMd="2">
+          <ion-item>
+            <ion-label position="stacked">{{"LONG_NAME_EN"|translate}} </ion-label>
+            <ion-input name="descEn" [(ngModel)]="model.descEn"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col sizeMd="4" offsetMd="2">
+          <ion-item>
+            <ion-label position="stacked">{{"SHORT_NAME_AR"|translate}} </ion-label>
+            <ion-input name="shortNameAr" [(ngModel)]="model.shortNameAr"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col sizeMd="4">
+          <ion-item>
+            <ion-label position="stacked">{{"SHORT_NAME_EN"|translate}} </ion-label>
+            <ion-input name="shortNameEn" [(ngModel)]="model.shortNameEn"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col sizeMd="8" offsetMd="2">
+          <ion-item>
+            <ion-label position="stacked">{{"ADDRESS"|translate}}</ion-label>
+            <ion-input name="address" [(ngModel)]="model.address"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>
