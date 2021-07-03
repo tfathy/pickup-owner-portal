@@ -39,11 +39,6 @@ const routes: Routes = [
     ,canLoad:[AuthGuard]
   },
   {
-    path: 'job',
-    loadChildren: () => import('./pages/job/job.module').then( m => m.JobPageModule)
-    ,canLoad:[AuthGuard]
-  },
-  {
     path: 'services',
     loadChildren: () => import('./pages/services/services.module').then( m => m.ServicesPageModule)
     ,canLoad:[AuthGuard]

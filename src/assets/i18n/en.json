@@ -38,7 +38,7 @@
   "PAY_METHOD": "Payment Methods",
   "PAY_METHOD_DESC": "The methods that customer could use for payment. Example:VISA,CASH,Transfer...etc",
   "BUILDING_TYPES": "Locations/Building Types",
-  "BUILDING_TYPES_DESC": "Location Types,for example,shopping malls,shooping areas,markets..,Building types like vila,tower,...ect",
+  "BUILDING_TYPES_DESC": "Location Types,for example,shopping malls,shooping areas,markets..ect",
   "USER_ACCOUNT": "Users",
   "USER_ACCOUNT_DESC": "The employees wh can access the current system'The administration portal'.To create a username and password for a user to access this portal",
   "CURRENCY": "Currencies",

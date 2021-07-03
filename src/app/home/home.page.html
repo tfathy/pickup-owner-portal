@@ -3,6 +3,11 @@
     <ion-title>
       {{"HOME_PAGE"|translate}}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button> Settings
+        <ion-icon slot="start" [src]="'assets/icon/settings.svg'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -49,19 +54,7 @@
     <ion-row class="ion-text-start">
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none" [routerLink]="'/job'">
-          <ion-img slot="start" class="small" src="assets/icon/kpi.png"></ion-img>
-          <div>
-            <ion-label>{{"JOBS"| translate}}</ion-label>
-            <ion-note slot="start"> {{"JOBS_DESC"|translate}}</ion-note>
-          </div>
-        </ion-item>
-
-
-      </ion-col>
-      <ion-col size-lg="4" size-md="6" size-sm="12">
-
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/services'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/services'">
           <ion-img slot="start" class="small" src="assets/icon/services.png"></ion-img>
           <div>
             <ion-label>{{"SERVICES"| translate}}</ion-label>
@@ -72,7 +65,7 @@
       </ion-col>
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/category'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/category'">
           <ion-img slot="start" class="small" src="assets/icon/categories.png"></ion-img>
           <div>
             <ion-label>{{"CATEGORIES"| translate}}</ion-label>
@@ -81,24 +74,23 @@
         </ion-item>
 
       </ion-col>
-    </ion-row>
-    <!-- The Third Row---------------->
-    <ion-row class="ion-text-start">
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/items'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/items'">
           <ion-img slot="start" class="small" src="assets/icon/items.png"></ion-img>
           <div>
             <ion-label>{{"ITEMS"| translate}}</ion-label>
             <ion-note slot="start"> {{"ITEMS_DESC"|translate}}</ion-note>
           </div>
         </ion-item>
-
-
       </ion-col>
+    </ion-row>
+    <!-- The Third Row---------------->
+    <ion-row class="ion-text-start">
+
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/uom'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/uom'">
           <ion-img slot="start" class="small" src="assets/icon/uom.png"></ion-img>
           <div>
             <ion-label>{{"UOM"| translate}}</ion-label>
@@ -118,13 +110,26 @@
         </ion-item>
 
       </ion-col>
+
+      <ion-col size-lg="4" size-md="6" size-sm="12">
+
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/building-type'">
+          <ion-img slot="start" class="small" src="assets/icon/building.png"></ion-img>
+          <div>
+            <ion-label>{{"BUILDING_TYPES"| translate}}</ion-label>
+            <ion-note slot="start"> {{"BUILDING_TYPES_DESC"|translate}}</ion-note>
+          </div>
+        </ion-item>
+
+      </ion-col>
+
     </ion-row>
 
     <!-- the forth row ---------------------->
     <ion-row class="ion-text-start">
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/pay-method'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/pay-method'">
           <ion-img slot="start" class="small" src="assets/icon/visa-green.png"></ion-img>
           <div>
             <ion-label>{{"PAY_METHOD"| translate}}</ion-label>
@@ -134,7 +139,7 @@
 
 
       </ion-col>
-      <ion-col size-lg="4" size-md="6" size-sm="12"  [routerLink]="'/vcl-type'">
+      <ion-col size-lg="4" size-md="6" size-sm="12" [routerLink]="'/vcl-type'">
 
         <ion-item class="menu-item" button lines="none">
           <ion-img slot="start" class="small" src="assets/icon/vcl-green.png"></ion-img>
@@ -145,33 +150,7 @@
         </ion-item>
 
       </ion-col>
-      <ion-col size-lg="4" size-md="6" size-sm="12">
-
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/building-type'">
-          <ion-img slot="start" class="small" src="assets/icon/building.png"></ion-img>
-          <div>
-            <ion-label>{{"BUILDING_TYPES"| translate}}</ion-label>
-            <ion-note slot="start"> {{"BUILDING_TYPES_DESC"|translate}}</ion-note>
-          </div>
-        </ion-item>
-
-      </ion-col>
-    </ion-row>
-    <!---The Fifth Row ----------------->
-    <ion-row class="ion-text-start">
-      <ion-col size-lg="4" size-md="6" size-sm="12">
-
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/users'">
-          <ion-img slot="start" class="small" src="assets/icon/user-account.png"></ion-img>
-          <div>
-            <ion-label>{{"USER_ACCOUNT"| translate}}</ion-label>
-            <ion-note slot="start"> {{"USER_ACCOUNT_DESC"|translate}}</ion-note>
-          </div>
-        </ion-item>
-
-
-      </ion-col>
-      <ion-col size-lg="4" size-md="6" size-sm="12"  [routerLink]="'/currency'">
+      <ion-col size-lg="4" size-md="6" size-sm="12" [routerLink]="'/currency'">
 
         <ion-item class="menu-item" button lines="none">
           <ion-img slot="start" class="small" src="assets/icon/dollar.png"></ion-img>
@@ -182,9 +161,25 @@
         </ion-item>
 
       </ion-col>
+
+    </ion-row>
+    <!---The Fifth Row ----------------->
+    <ion-row class="ion-text-start">
       <ion-col size-lg="4" size-md="6" size-sm="12">
 
-        <ion-item class="menu-item" button lines="none"  [routerLink]="'/country'">
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/users'">
+          <ion-img slot="start" class="small" src="assets/icon/user-account.png"></ion-img>
+          <div>
+            <ion-label>{{"USER_ACCOUNT"| translate}}</ion-label>
+            <ion-note slot="start"> {{"USER_ACCOUNT_DESC"|translate}}</ion-note>
+          </div>
+        </ion-item>
+
+      </ion-col>
+
+      <ion-col size-lg="4" size-md="6" size-sm="12">
+
+        <ion-item class="menu-item" button lines="none" [routerLink]="'/country'">
           <ion-img slot="start" class="small" src="assets/icon/globe.png"></ion-img>
           <div>
             <ion-label>{{"COUNTRIES"| translate}}</ion-label>
