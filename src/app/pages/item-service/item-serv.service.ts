@@ -3,54 +3,49 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { UomModel } from './uom-model';
+import { ItemServiceModel } from './item-service-model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class UomService {
-
-  constructor(private http: HttpClient) { }
-
-  findAll(token: string): Observable<UomModel[]> {
+export class ItemServService {
+  url = 'sys-owner-app/def/item-service';
+  constructor(private http: HttpClient) {}
+  findAll(token: string): Observable<ItemServiceModel[]> {
     const headerInfo = new HttpHeaders({
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       Authorization: token,
     });
-
-    return this.http.get<UomModel[]>(
-      `${environment.backendUrl}/sys-owner-app/def/uom`,
+    return this.http.get<ItemServiceModel[]>(
+      `${environment.backendUrl}/${this.url}`,
       { headers: headerInfo }
     );
   }
 
-  findById(token: string, id): Observable<UomModel> {
+  findById(token: string, id): Observable<ItemServiceModel> {
     const headerInfo = new HttpHeaders({ Authorization: token });
-    return this.http.get<UomModel>(
-      `${environment.backendUrl}/sys-owner-app/def/item-category/${id}`
-   ,{headers:headerInfo} );
+    return this.http.get<ItemServiceModel>(
+      `${environment.backendUrl}/${this.url}/${id}`,
+      { headers: headerInfo }
+    );
   }
 
-  create(
-    token: string,
-    body: UomModel
-  ): Observable<UomModel> {
+  create(token: string, body: ItemServiceModel): Observable<ItemServiceModel> {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    return this.http.post<UomModel>(
-      `${environment.backendUrl}/sys-owner-app/def/uom`,
+    return this.http.post<ItemServiceModel>(
+      `${environment.backendUrl}/${this.url}`,
       body,
       { headers: headerInfo }
     );
   }
 
-  update(token: string, body: UomModel, id) {
+  update(token: string, body: ItemServiceModel, id) {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    return this.http.put<UomModel>(
-      `${environment.backendUrl}/sys-owner-app/def/uom/${id}`,
+    return this.http.put<ItemServiceModel>(
+      `${environment.backendUrl}/${this.url}/${id}`,
       body,
       { headers: headerInfo }
     );
@@ -61,7 +56,7 @@ export class UomService {
       Authorization: token,
     });
     return this.http.delete<string>(
-      `${environment.backendUrl}/sys-owner-app/def/uom/${id}`,
+      `${environment.backendUrl}/${this.url}/${id}`,
       {
         headers: headerInfo,
       }
