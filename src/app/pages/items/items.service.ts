@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { CategoryModel } from '../category/category-model';
 import { ItemModel } from './item-model';
 
 @Injectable({
@@ -25,10 +26,9 @@ export class ItemsService {
   findById(token: string, id): Observable<ItemModel> {
     const headerInfo = new HttpHeaders({ Authorization: token });
     return this.http.get<ItemModel>(
-      `${environment.backendUrl}/${this.url}/${id}`
+      `${environment.backendUrl}/${this.url}/${id}`,{headers: headerInfo}
     );
   }
-
   create(
     token: string,
     body: ItemModel

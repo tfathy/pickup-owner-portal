@@ -46,5 +46,6 @@
   "COUNTRIES": "Countries",
   "COUNTRIES_DESC": "List of countries information",
   "SETTINGS":"Settings",
-  "COMPANY_PROFILE":"Company's profile"
+  "COMPANY_PROFILE":"Company's profile",
+  "SELECT_CATEGORY":"Select a Category"
 }

@@ -6,7 +6,7 @@ export class ItemServiceModel {
   constructor(
     public id?: number,
     public activeFlag?: string,
-    public gnItem?: ItemModel,
+    public itemId?: number,
     public gnService?: ServiceModel,
     public whoColumn?: WhoColumns
   ) {}
