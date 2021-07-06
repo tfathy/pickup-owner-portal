@@ -3,7 +3,6 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
 import {
   ModalController,
   LoadingController,
@@ -16,6 +15,7 @@ import { ItemModel } from '../items/item-model';
 import { ItemsService } from '../items/items.service';
 import { ServiceModel } from '../services/service-model';
 import { ServiceService } from '../services/service.service';
+import { ItemServService } from './item-serv.service';
 import { ItemServiceModel } from './item-service-model';
 import { ItemServiceComponent } from './item-service/item-service.component';
 const ELEMENT_DATA: ItemServiceModel[] = [];
@@ -41,6 +41,7 @@ export class ItemServicePage implements OnInit, AfterViewInit {
   constructor(
     private modalCtrl: ModalController,
     private service: ItemsService,
+    private itemServiceService: ItemServService,
     private servDef: ServiceService,
     private catService: CategoryService,
     private loadingCtrl: LoadingController,
@@ -88,9 +89,9 @@ export class ItemServicePage implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
   doRefresh(itemId) {
-    this.service.findById('Bearer ' + this.authToken.token,itemId).subscribe((data) => {
+    this.itemServiceService.findByItemId('Bearer ' + this.authToken.token,itemId).subscribe((data) => {
       console.log(data);
-      this.dataSource.data = data.gnItemService;
+      this.dataSource.data = data;
     });
   }
   onItemClick(item: ItemModel) {
@@ -113,7 +114,7 @@ export class ItemServicePage implements OnInit, AfterViewInit {
         modalElement.present();
         modalElement.onDidDismiss().then((dismissedData) => {
           if (dismissedData.data.saved) {
-          //  this.doRefresh();
+            this.doRefresh(dismissedData.data.itemId);
             this.showToast('Transaction Saved');
           }
         });

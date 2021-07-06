@@ -38,9 +38,6 @@ token: authToken;
     });
   }
   save() {
-    console.log('***************this.model**************');
-    console.log(this.model);
-    console.log('***************this.model**************');
     this.loadingCtrl
       .create({
         message: 'Saving .. please wait',
@@ -55,6 +52,7 @@ token: authToken;
                 loadingElement.dismiss();
                 this.modalCtrl.dismiss({
                   saved: true,
+                  itemId:data.itemId
                 });
               },
               (error) => {
@@ -71,6 +69,7 @@ token: authToken;
                 loadingElement.dismiss();
                 this.modalCtrl.dismiss({
                   saved: true,
+                  itemId:data.itemId
                 });
               },
               (error) => {

@@ -29,6 +29,14 @@ export class ItemServService {
     );
   }
 
+  findByItemId(token: string, itemId): Observable<ItemServiceModel[]> {
+    const headerInfo = new HttpHeaders({ Authorization: token });
+    return this.http.get<ItemServiceModel[]>(
+      `${environment.backendUrl}/${this.url}/item/${itemId}`,
+      { headers: headerInfo }
+    );
+  }
+
   create(token: string, body: ItemServiceModel): Observable<ItemServiceModel> {
     const headerInfo = new HttpHeaders({
       Authorization: token,
