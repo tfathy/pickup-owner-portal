@@ -22,7 +22,7 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label position="floating">{{"SERVICE"|translate}}</ion-label>
+          <ion-label position="floating">{{"SERVICES"|translate}}</ion-label>
           <ion-select name="gnService" [(ngModel)]="model.gnService"
             [selectedText]="model.gnService?model.gnService.descAr:''">
             <ion-select-option *ngFor="let srv of serviceDefList" [value]="srv">{{srv.descAr}}</ion-select-option>

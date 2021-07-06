@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -7,8 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {
+  constructor(private translate: TranslateService) {
+    this.setLanguage('ar');
   }
 
-
+  setLanguage(lang: string){
+    this.translate.setDefaultLang(lang);
+    this.translate.use(lang);
+  }
 }

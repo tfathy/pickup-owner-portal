@@ -27,12 +27,12 @@
               <ion-card-title>
                 {{itm.descAr}}
               </ion-card-title>
-              <ion-note [color]="isSelected(itm)?'light':'danger'">Number of services :{{itm.gnItemService.length}}</ion-note>
+              <ion-note [color]="isSelected(itm)?'light':'danger'">{{"SERVICE_COUNT"|translate}} :{{itm.gnItemService.length}}</ion-note>
             </ion-card-header>
             <ion-card-content>
               <div class="row">
 
-                  <ion-button (click)="addService(itm)" fill="solid" color="light"> Add Service
+                  <ion-button (click)="addService(itm)" fill="solid" color="light"> {{"ADD_SERVICE"|translate}}
                     <ion-icon name="add-circle-outline" slot="end"></ion-icon>
                   </ion-button>
               </div>
