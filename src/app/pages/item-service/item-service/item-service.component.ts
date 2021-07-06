@@ -12,6 +12,7 @@ import { ItemServiceModel } from '../item-service-model';
 })
 export class ItemServiceComponent implements OnInit {
 @Input()model: ItemServiceModel;
+@Input() title: string;
 @Input()recordStatus: string;
 @Input() serviceDefList: ServiceModel[] =[];
 token: authToken;

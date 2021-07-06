@@ -13,6 +13,14 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+       <ion-item>
+        <ion-label position="stacked">{{"ITEM_NAME"|translate}}</ion-label>
+        <ion-input readonly>{{title}}</ion-input>
+       </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
         <ion-item>
           <ion-label position="floating">{{"SERVICE"|translate}}</ion-label>
           <ion-select name="gnService" [(ngModel)]="model.gnService"

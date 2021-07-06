@@ -35,7 +35,9 @@ export class ItemServicePage implements OnInit, AfterViewInit {
   selection = new SelectionModel<ItemServiceModel>(false, []);
   categoryList: CategoryModel[] = [];
   selectedCategory: CategoryModel;
-  selectedItemId;
+  currentItem;
+  itemName: string;
+  itemSelected;
   serviceList: ServiceModel[] = [];
 
   constructor(
@@ -60,7 +62,6 @@ export class ItemServicePage implements OnInit, AfterViewInit {
         this.service.findAll('Bearer ' + this.authToken.token).subscribe(
           (data) => {
             this.itemList = data;
-            //   this.dataSource.data = data[0].gnItemService;
             this.servDef
               .findAll('Bearer ' + this.authToken.token)
               .subscribe((servData) => {
@@ -89,22 +90,41 @@ export class ItemServicePage implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
   doRefresh(itemId) {
-    this.itemServiceService.findByItemId('Bearer ' + this.authToken.token,itemId).subscribe((data) => {
-      console.log(data);
-      this.dataSource.data = data;
-    });
+    this.itemServiceService
+      .findByItemId('Bearer ' + this.authToken.token, itemId)
+      .subscribe((data) => {
+        console.log(data);
+        this.dataSource.data = data;
+      });
   }
+
   onItemClick(item: ItemModel) {
-    const itemServiceList = item.gnItemService.filter((p) => p.itemId === item.id );
-    console.log(itemServiceList);
-    this.dataSource.data = itemServiceList;
+    /*  const itemServiceList = item.gnItemService.filter(
+      (p) => p.itemId === item.id
+    );*/
+    this.itemServiceService
+      .findByItemId('Bearer ' + this.authToken.token, item.id)
+      .subscribe((data) => {
+        console.log(data);
+        this.dataSource.data = data;
+      });
+    //  this.dataSource.data = itemServiceList;
+
+    if (this.isSelected(item)) {
+      this.itemSelected = null;
+    } else {
+      this.itemSelected = item;
+      this.itemName = item.descAr;
+    }
   }
+
   editRow(body: ItemServiceModel) {
     this.modalCtrl
       .create({
         component: ItemServiceComponent,
         componentProps: {
           model: body,
+          title: this.itemName,
           serviceDefList: this.serviceList,
           recordStatus: 'update',
         },
@@ -121,9 +141,25 @@ export class ItemServicePage implements OnInit, AfterViewInit {
       });
   }
   onCatChange() {
-    this.itemList.filter(
-      (p) => p.gnItemCategory.id === this.selectedCategory.id
-    );
+    console.log(this.selectedCategory);
+    this.loadingCtrl
+      .create({
+        message: 'filtering data ...',
+      })
+      .then((loadingElmnt) => {
+        loadingElmnt.present();
+        this.service
+          .findItemByCatId(
+            'Bearer ' + this.authToken.token,
+            this.selectedCategory.id
+          )
+          .subscribe((resData) => {
+            this.itemList = resData;
+            loadingElmnt.dismiss();
+          },error=>{
+            loadingElmnt.dismiss();
+          });
+      });
   }
   addService(body: ItemModel) {
     console.log(body.id);
@@ -139,6 +175,7 @@ export class ItemServicePage implements OnInit, AfterViewInit {
         component: ItemServiceComponent,
         componentProps: {
           model: itemService,
+          title: this.itemName,
           serviceDefList: this.serviceList,
           recordStatus: 'insert',
         },
@@ -154,6 +191,11 @@ export class ItemServicePage implements OnInit, AfterViewInit {
         });
       });
   }
+
+  isSelected(itm) {
+    return this.itemSelected === itm; // the track that you selected
+  }
+
   private showToast(msg: string) {
     this.toast
       .create({

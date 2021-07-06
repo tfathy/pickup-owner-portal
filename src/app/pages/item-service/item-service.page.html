@@ -14,16 +14,33 @@
 
         <ion-item color="warning">
           <ion-label position="floating">{{"SELECT_CATEGORY"|translate}} </ion-label>
-          <ion-select interface="popover" [(ngModel)]="selectedCategory" (ionChange)="onCatChange()">
+          <ion-select [(ngModel)]="selectedCategory" (ionChange)="onCatChange()">
             <ion-select-option *ngFor="let cat of categoryList" [value]="cat">{{cat.descAr}}</ion-select-option>
           </ion-select>
         </ion-item>
 
         <ion-list>
-          <ion-item *ngFor="let itm of itemList" (click)="onItemClick(itm)" button>
-            <ion-label>{{itm.descAr}}</ion-label>
-            <ion-button (click)="addService(itm)">add</ion-button>
-          </ion-item>
+          <ion-card *ngFor="let itm of itemList" (click)="onItemClick(itm);currentItem = itm " button
+            [color]="isSelected(itm)?'danger':'light'">
+            <ion-card-header>
+
+              <ion-card-title>
+                {{itm.descAr}}
+              </ion-card-title>
+              <ion-note [color]="isSelected(itm)?'light':'danger'">Number of services :{{itm.gnItemService.length}}</ion-note>
+            </ion-card-header>
+            <ion-card-content>
+              <div class="row">
+
+                  <ion-button (click)="addService(itm)" fill="solid" color="light"> Add Service
+                    <ion-icon name="add-circle-outline" slot="end"></ion-icon>
+                  </ion-button>
+              </div>
+
+            </ion-card-content>
+
+          </ion-card>
+
         </ion-list>
       </ion-col>
       <ion-col size="8">

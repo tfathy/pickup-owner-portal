@@ -7,7 +7,7 @@ import { CategoryModel } from '../category/category-model';
 import { ItemModel } from './item-model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ItemsService {
   url = 'sys-owner-app/def/item';
@@ -17,22 +17,28 @@ export class ItemsService {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    return this.http.get<ItemModel[]>(
-      `${environment.backendUrl}/${this.url}`,
-      { headers: headerInfo }
-    );
+    return this.http.get<ItemModel[]>(`${environment.backendUrl}/${this.url}`, {
+      headers: headerInfo,
+    });
   }
 
   findById(token: string, id): Observable<ItemModel> {
     const headerInfo = new HttpHeaders({ Authorization: token });
     return this.http.get<ItemModel>(
-      `${environment.backendUrl}/${this.url}/${id}`,{headers: headerInfo}
+      `${environment.backendUrl}/${this.url}/${id}`,
+      { headers: headerInfo }
     );
   }
-  create(
-    token: string,
-    body: ItemModel
-  ): Observable<ItemModel> {
+  findItemByCatId(token: string, catId): Observable<ItemModel[]> {
+    const headerInfo = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.http.get<ItemModel[]>(
+      `${environment.backendUrl}/${this.url}/cat/${catId}`,
+      { headers: headerInfo }
+    );
+  }
+  create(token: string, body: ItemModel): Observable<ItemModel> {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });

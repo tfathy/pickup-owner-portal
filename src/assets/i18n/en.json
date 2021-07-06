@@ -30,6 +30,7 @@
   "CATEGORIES": "Items Categoty",
   "CATEGORIES_DESC": "for example: furnature,Appliances,cattles ..etc",
   "ITEMS": "Items",
+  "ITEM_NAME":"Item Name",
   "ITEMS_DESC": "Items to be carried.Example: Wardrobe,bed,TV,Labms ..etc",
   "UOM": "Units Of Measuring",
   "UOM_DESC": "Example:pice ,Kilogram,meter...etch",
