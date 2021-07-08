@@ -50,5 +50,9 @@
   "COMPANY_PROFILE":"بيانات الشركة مالكة النظام",
   "SELECT_CATEGORY":"التصنيف",
   "SERVICE_COUNT":"عدد الخدمات المعرفه",
-  "ADD_SERVICE":"إضافة خدمة"
+  "ADD_SERVICE":"إضافة خدمة",
+  "NAME_AR":"الاسم كامل عربي",
+  "NAME_EN":"الاسم كامل لاتيني",
+  "DELETE":"حزف",
+  "NOTES":"ملاحظات"
 }

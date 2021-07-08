@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button (click)="save()">{{"SAVE"|translate}}</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">{{"CLOSE"|translate}}</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{"NAME_AR"|translate}} </ion-label>
+          <ion-input name="fullNameAr" [(ngModel)]="model.fullNameAr"></ion-input>
+        </ion-item>
+      </ion-col>
+      </ion-row>
+      <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating"> {{"NAME_EN"|translate}} </ion-label>
+          <ion-input name="fullNameAr" [(ngModel)]="model.fullNameEn"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">{{"NOTES"|translate}} </ion-label>
+          <ion-input name="notes" [(ngModel)]="model.notes"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-content>

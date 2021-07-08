@@ -21,6 +21,7 @@ import { ServicesComponent } from '../pages/services/services/services.component
 import { IonicSelectableModule } from 'ionic-selectable';
 import { ItemsComponent } from '../pages/items/items/items.component';
 import { ItemServiceComponent } from '../pages/item-service/item-service/item-service.component';
+import { EmployeeComponent } from '../pages/employee/employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ItemServiceComponent } from '../pages/item-service/item-service/item-se
     PayMethodComponent,
     ServicesComponent,
     ItemsComponent,
-    ItemServiceComponent
+    ItemServiceComponent,
+    EmployeeComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +68,8 @@ import { ItemServiceComponent } from '../pages/item-service/item-service/item-se
     PayMethodComponent,
     ServicesComponent,
     ItemsComponent,
-    ItemServiceComponent
+    ItemServiceComponent,
+    EmployeeComponent
   ],
 })
 export class SharedModule {}

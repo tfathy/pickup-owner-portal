@@ -50,5 +50,9 @@
   "COMPANY_PROFILE":"Company's profile",
   "SELECT_CATEGORY":"Select a Category",
   "SERVICE_COUNT":"Number of defined services",
-  "ADD_SERVICE":"Add Service"
+  "ADD_SERVICE":"Add Service",
+  "NAME_AR":"Full name in arabic",
+  "NAME_EN":"Full Name In English",
+  "DELETE":"Delete",
+  "NOTES":"Notes"
 }
