@@ -54,5 +54,8 @@
   "NAME_AR":"Full name in arabic",
   "NAME_EN":"Full Name In English",
   "DELETE":"Delete",
-  "NOTES":"Notes"
+  "NOTES":"Notes",
+  "ACCOUNT_STATUS":"Account Status",
+  "USER_TYPE":"User Type",
+  "EMAIL":"e-mail"
 }
