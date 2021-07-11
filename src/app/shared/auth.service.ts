@@ -158,7 +158,7 @@ export class AuthService implements OnDestroy{
     if (this.activeLogoutTimer) {
       clearTimeout(this.activeLogoutTimer);
     }
-  //  this._user.next(null);
+  this._user.next(null);
    // Plugins.Storage.remove({ key: "authData" });
   }
 

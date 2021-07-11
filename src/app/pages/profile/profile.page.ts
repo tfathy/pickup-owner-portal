@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
 import { CountryModel } from '../country/country-model';
 import { CountryService } from '../country/country.service';
+import { SysOwnerUserModel } from '../users/sys-owner-users-model';
+import { ProfileService } from './profile.service';
 import { SysOwnerModel } from './sys-owner-model';
 import { SysOwnerService } from './sys-owner.service';
 
@@ -13,6 +15,8 @@ import { SysOwnerService } from './sys-owner.service';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+
+  changePasswordForm;
   model: SysOwnerModel = new SysOwnerModel();
   token: authToken;
   empName: string;
@@ -21,11 +25,24 @@ export class ProfilePage implements OnInit {
   constructor(
     private service: SysOwnerService,
     private countryService: CountryService,
+    private profileService: ProfileService,
     private loadingCtrl: LoadingController,
     private toast: ToastController
   ) {}
 
   ngOnInit() {
+    this.changePasswordForm = new FormGroup({
+      oldpwassword: new FormControl('', [Validators.required]),
+      newpassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+      repeatpassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
+    });
+
     this.loadingCtrl
       .create({
         message: 'featching data',
@@ -73,6 +90,50 @@ export class ProfilePage implements OnInit {
             }
           );
       });
+  }
+  changePassword() {
+    if (this.newpassword.value !== this.repeatpassword.value) {
+      this.showToast('PASSWORD_MISMATCH');
+      return;
+    }
+    const body: SysOwnerUserModel = new SysOwnerUserModel();
+    this.loadingCtrl
+      .create({
+        message: 'please wait ...',
+      })
+      .then(async (elmnt) => {
+        elmnt.present();
+        this.token = await readStorage('authData');
+        body.email = this.token.email;
+        this.profileService
+          .changePassword(
+            'Bearer ' + this.token.token,
+            body,
+            body.email,
+            this.oldpwassword.value,
+            this.newpassword.value
+          )
+          .subscribe((resData) => {
+            elmnt.dismiss();
+            console.log(resData);
+            this.showToast('Password changed successfully');
+          },error=>{
+            elmnt.dismiss();
+            this.showToast('Error: Password could not be changed');
+          });
+      });
+  }
+
+  get oldpwassword() {
+    return this.changePasswordForm.get('oldpwassword');
+  }
+
+  get newpassword() {
+    return this.changePasswordForm.get('newpassword');
+  }
+
+  get repeatpassword(){
+    return this.changePasswordForm.get('repeatpassword');
   }
 
   private showToast(msg: string) {

@@ -1,13 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>
-      {{"HOME_PAGE"|translate}}
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-title>
+        {{"HOME_PAGE"|translate}}
+      </ion-title>
+    </ion-buttons>
+
     <ion-buttons slot="end">
-      <ion-button [routerLink]="'/profile'"> {{"SETTINGS"|translate}}
-        <ion-icon slot="start" [src]="'assets/icon/settings.svg'"></ion-icon>
+      <ion-button color="light" [routerLink]="'/profile'"> {{"SETTINGS"|translate}}
+        <ion-icon name="settings" slot="end"></ion-icon>
+      </ion-button>
+      <ion-button color="light" (click)="logout()">{{"LOG_OUT"|translate}}
+        <ion-icon name="log-out" slot="end"></ion-icon>
       </ion-button>
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 

@@ -41,12 +41,12 @@
     <!-- desce Column -->
     <ng-container matColumnDef="fullNameAr">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"NAME_AR"|translate}} </th>
-      <td mat-cell *matCellDef="let element"> {{element.hrEmployee.fullNameAr}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.hrEmployee?element.hrEmployee.fullNameAr:''}} </td>
     </ng-container>
     <!-- desce Column -->
     <ng-container matColumnDef="fullNameEn">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"NAME_EN"|translate}} </th>
-      <td mat-cell *matCellDef="let element"> {{element.hrEmployee.fullNameEn}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.hrEmployee?element.hrEmployee.fullNameEn:''}} </td>
     </ng-container>
     <!-- Edit-->
     <ng-container matColumnDef="edit" class="table-active">

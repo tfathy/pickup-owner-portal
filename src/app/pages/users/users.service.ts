@@ -41,14 +41,13 @@ export class UsersService {
   }
   updateUser(
     token: string,
-    body: CreateUserModel,
-    email: string
+    body: CreateUserModel
   ): Observable<CreateUserModel> {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
     return this.http.put<CreateUserModel>(
-      `${environment.backendUrl}/${this.url}/${body.email}`,
+      `${environment.backendUrl}/${this.url}/update/${body.email}`,
       body,
       { headers: headerInfo }
     );

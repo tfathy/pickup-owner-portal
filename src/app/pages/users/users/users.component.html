@@ -37,7 +37,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button *ngIf="model.accountStatus==='ENABLED' && recordStatus==='update'"  (click)="disableRecord()"
+    <ion-button *ngIf="model.accountStatus==='VERIFIED' && recordStatus==='update'"  (click)="disableRecord()"
                 color="danger" expand="block" fill="outline">{{"DISABLE"|translate}}</ion-button>
     <ion-button *ngIf="model.accountStatus==='DISABLED' && recordStatus==='update'" (click)="enableRecord()"
                 color="primary" expand="block" fill="outline">{{"ACTIVATE"|translate}}</ion-button>

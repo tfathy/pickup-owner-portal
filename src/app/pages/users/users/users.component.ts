@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
             );
         } else if (this.recordStatus === 'update') {
           this.service
-            .updateUser('Bearer ' + this.token.token, this.model, this.model.email)
+            .updateUser('Bearer ' + this.token.token, this.model)
             .subscribe(
               (data) => {
                 loadingElement.dismiss();
@@ -78,7 +78,7 @@ export class UsersComponent implements OnInit {
     this.save();
   }
   enableRecord(){
-    this.model.accountStatus = 'ENABLED';
+    this.model.accountStatus = 'VERIFIED';
     this.recordStatus = 'update';
     this.save();
   }
