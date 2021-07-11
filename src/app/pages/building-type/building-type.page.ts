@@ -1,4 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -69,16 +70,16 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
       modalElement.onDidDismiss().then(dismissedData=>{
         if(dismissedData.data.saved){
           this.showToast('Transaction Saved');
+          this.doRefresh();
         }
       });
     });
   }
-  async doRefresh(event) {
+  async doRefresh() {
     this.authToken = await readStorage('authData');
     this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
       console.log(data);
       this.dataSource.data = data as BuildingTypeModel[];
-      event.target.complete();
     });
   }
   create(){
@@ -93,6 +94,7 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
       modalElement.onDidDismiss().then(dismissedData=>{
         if(dismissedData.data.saved){
           this.showToast('Transaction Saved');
+          this.doRefresh();
         }
       });
     });

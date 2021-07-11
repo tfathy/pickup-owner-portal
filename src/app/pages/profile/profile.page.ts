@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
 import { CountryModel } from '../country/country-model';
 import { CountryService } from '../country/country.service';
@@ -27,7 +27,8 @@ export class ProfilePage implements OnInit {
     private countryService: CountryService,
     private profileService: ProfileService,
     private loadingCtrl: LoadingController,
-    private toast: ToastController
+    private toast: ToastController,
+    private alert: AlertController
   ) {}
 
   ngOnInit() {
@@ -119,7 +120,8 @@ export class ProfilePage implements OnInit {
             this.showToast('Password changed successfully');
           },error=>{
             elmnt.dismiss();
-            this.showToast('Error: Password could not be changed');
+            console.log(error);
+            this.showAlert(error.error.message);
           });
       });
   }
@@ -146,5 +148,13 @@ export class ProfilePage implements OnInit {
       .then((toastCtrl) => {
         toastCtrl.present();
       });
+  }
+  private showAlert(msg: string){
+    this.alert.create({
+      message: msg,
+      buttons:[{text:'OK'}]
+    }).then(elmnt=>{
+      elmnt.present();
+    });
   }
 }

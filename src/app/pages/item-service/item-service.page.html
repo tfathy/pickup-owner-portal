@@ -11,7 +11,6 @@
   <ion-grid>
     <ion-row>
       <ion-col size="4">
-
         <ion-item color="warning">
           <ion-label position="floating">{{"SELECT_CATEGORY"|translate}} </ion-label>
           <ion-select [(ngModel)]="selectedCategory" (ionChange)="onCatChange()">
@@ -31,7 +30,7 @@
             </ion-card-header>
             <ion-card-content>
               <div class="row">
-                  <ion-button (click)="addService(itm)" fill="solid" color="light"> {{"ADD_SERVICE"|translate}}
+                  <ion-button (click)="currentItem = itm;addService(itm)" fill="solid" color="light"> {{"ADD_SERVICE"|translate}}
                     <ion-icon name="add-circle-outline" slot="end"></ion-icon>
                   </ion-button>
               </div>

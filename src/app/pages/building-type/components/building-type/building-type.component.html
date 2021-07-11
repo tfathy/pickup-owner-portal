@@ -1,10 +1,10 @@
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-button (click)="save()" >Save</ion-button>
+      <ion-button (click)="save()" >{{"SAVE"|translate}}</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="close()" >Close</ion-button>
+      <ion-button (click)="close()" >{{"CLOSE"|translate}}</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +13,7 @@
   <ion-row>
     <ion-col>
       <ion-item>
-        <ion-label position="floating"> Arabic Description    </ion-label>
+        <ion-label position="floating">{{"DESC_AR"|translate}}</ion-label>
         <ion-input name="descAr" [(ngModel)]="model.descAr"></ion-input>
       </ion-item>
     </ion-col>
@@ -21,7 +21,7 @@
   <ion-row>
     <ion-col>
       <ion-item>
-        <ion-label position="floating"> Arabic Description    </ion-label>
+        <ion-label position="floating">{{"DESC_EN"|translate}}</ion-label>
         <ion-input name="descAr" [(ngModel)]="model.descEn"></ion-input>
       </ion-item>
     </ion-col>
