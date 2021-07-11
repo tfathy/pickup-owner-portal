@@ -23,6 +23,7 @@ import { ItemsComponent } from '../pages/items/items/items.component';
 import { ItemServiceComponent } from '../pages/item-service/item-service/item-service.component';
 import { EmployeeComponent } from '../pages/employee/employee/employee.component';
 import { UsersComponent } from '../pages/users/users/users.component';
+import { SubRequestComponent } from '../pages/sub-request/sub-request/sub-request.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { UsersComponent } from '../pages/users/users/users.component';
     ItemsComponent,
     ItemServiceComponent,
     EmployeeComponent,
-    UsersComponent
+    UsersComponent,
+    SubRequestComponent
   ],
   imports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { UsersComponent } from '../pages/users/users/users.component';
     ItemsComponent,
     ItemServiceComponent,
     EmployeeComponent,
-    UsersComponent
+    UsersComponent,
+    SubRequestComponent
   ],
 })
 export class SharedModule {}

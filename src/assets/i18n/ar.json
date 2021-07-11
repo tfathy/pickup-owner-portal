@@ -59,5 +59,13 @@
   "USER_TYPE":"نوع الحساب",
   "EMAIL":"عنوان البريد الاكتروني",
   "LOG_OUT":"خروج",
-  "CHANGE_PW":"تغيير كلمة السر"
+  "CHANGE_PW":"تغيير كلمة السر",
+  "REQUEST_DATE": "تاريخ الطلب",
+  "REQUEST_STATUS": "حالة الطلب",
+  "SERIAL": "مسلسل",
+  "ADDRESS": "العنوان",
+  "COMPANY_NAME_AR": "اسم الشركة عربي",
+  "COMPANY_NAME_EN": "اسم الشركة لاتيني",
+  "CONTACT_PERSON_NAME": "جهة الاتصال",
+  "VIEW": "عرض"
 }

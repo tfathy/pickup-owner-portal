@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SubRequestPage } from './sub-request.page';
+import { SubRequestComponent } from './sub-request.component';
 
-describe('SubRequestPage', () => {
-  let component: SubRequestPage;
-  let fixture: ComponentFixture<SubRequestPage>;
+describe('SubRequestComponent', () => {
+  let component: SubRequestComponent;
+  let fixture: ComponentFixture<SubRequestComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ SubRequestPage ],
+      declarations: [ SubRequestComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SubRequestPage);
+    fixture = TestBed.createComponent(SubRequestComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

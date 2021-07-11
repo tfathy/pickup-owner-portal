@@ -8,5 +8,75 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="8">
+        <ion-item>
+          <ion-label position="floating">{{"SEARCH"|translate}}</ion-label>
+          <ion-input (keyup)="doFilter($any($event.target ).value)"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <table mat-table [dataSource]="dataSource" matSort class="table">
+    <!-- id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"ID"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <!-- descEn Column -->
+    <ng-container matColumnDef="reqDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"REQUEST_DATE"|translate}}</th>
+      <td mat-cell *matCellDef="let element"> {{element.reqDate|date:'dd-MM-yyyy'}} </td>
+    </ng-container>
+    <!-- status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger">{{"REQUEST_STATUS"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+    <!-- Serial Column -->
+    <ng-container matColumnDef="reqSerial">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"SERIAL"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.reqSerial}}/{{element.reqYear}} </td>
+    </ng-container>
+     <!-- address Column -->
+     <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger">{{"ADDRESS"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+    </ng-container>
+     <!-- companyNameAr Column -->
+     <ng-container matColumnDef="companyNameAr">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger">{{"COMPANY_NAME_AR"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.companyNameAr}} </td>
+    </ng-container>
+     <!-- companyNameEn Column -->
+     <ng-container matColumnDef="companyNameEn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger">{{"COMPANY_NAME_EN"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.companyNameEn}} </td>
+    </ng-container>
+     <!-- contactPersonName Column -->
+     <ng-container matColumnDef="contactPersonName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger">{{"CONTACT_PERSON_NAME"|translate}} </th>
+      <td mat-cell *matCellDef="let element"> {{element.contactPersonName}} </td>
+    </ng-container>
+
+    <!-- view-->
+    <ng-container matColumnDef="view" class="table-active">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-danger"> {{"VIEW"|translate}} </th>
+      <td mat-cell *matCellDef="let element">
+        <ion-button color="primary" slot="icon-only" (click)="viewRow(element)">
+          <ion-icon name="create-sharp"></ion-icon>
+        </ion-button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"
+      [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}" (mouseover)="row.hovered = true"
+      (mouseout)="row.hovered = false">
+    </tr>
+
+  </table>
+  <mat-paginator [pageSize]="25" [pageSizeOptions]="[ 50, 100,200]"></mat-paginator>
 </ion-content>
