@@ -44,12 +44,10 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
         this.authToken = await readStorage('authData');
         this.empName = this.authToken.fullnameEn;
         this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
-          console.log(data);
           this.dataSource.data = data;
           loadingElmnt.dismiss();
         },error=>{
           loadingElmnt.dismiss();
-          console.log(error);
         });
       });
   }
@@ -78,7 +76,6 @@ export class BuildingTypePage implements OnInit, AfterViewInit {
   async doRefresh() {
     this.authToken = await readStorage('authData');
     this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
-      console.log(data);
       this.dataSource.data = data as BuildingTypeModel[];
     });
   }

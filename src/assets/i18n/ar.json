@@ -67,5 +67,9 @@
   "COMPANY_NAME_AR": "اسم الشركة عربي",
   "COMPANY_NAME_EN": "اسم الشركة لاتيني",
   "CONTACT_PERSON_NAME": "جهة الاتصال",
-  "VIEW": "عرض"
+  "VIEW": "عرض",
+  "FORGET_PASSWORD":"نسيت كلمة السر؟",
+  "LOGIN":"تسجيل دخول",
+  "PASSWORD":"كلمة السر",
+  "USERNAME":"البريد الالكتروني"
 }

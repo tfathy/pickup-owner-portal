@@ -9,9 +9,7 @@
   background-color: #e3f8ff;
   margin: 30px auto;
 }
-ion-item{
-  --padding-bottom:20px;
-}
+
 ion-button{
   --margin-top:20px;
 }
@@ -26,4 +24,7 @@ ion-toggle {
 .error-msg{
   border: red;
   border-width: 10px;
+}
+.notification-alert{
+  background: #eee34e;
 }

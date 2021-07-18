@@ -7,7 +7,7 @@
         <ion-col sizeLg="4" sizeMd="12"></ion-col>
         <ion-col sizeLg="4" sizeMd="12">
           <ion-item>
-            <ion-input formControlName="username" placeholder="User Name"></ion-input>
+            <ion-input formControlName="username" [placeholder]="'USERNAME'|translate"></ion-input>
           </ion-item>
           <div class="ion-text-center error-msg" *ngIf="username.touched && username.invalid">
             <div *ngIf="username.errors.required">Please enter user name</div>
@@ -21,7 +21,7 @@
         <ion-col sizeLg="4" sizeMd="12"></ion-col>
         <ion-col sizeLg="4" sizeMd="12">
           <ion-item>
-            <ion-input formControlName="password" placeholder="Password" type="password" required></ion-input>
+            <ion-input formControlName="password" [placeholder]="'PASSWORD'|translate" type="password" required></ion-input>
           </ion-item>
         </ion-col>
         <ion-col sizeLg="4" sizeMd="12"></ion-col>
@@ -29,7 +29,7 @@
       <ion-row>
         <ion-col sizeLg="4" sizeMd="12"></ion-col>
         <ion-col sizeLg="4" sizeMd="12">
-          <ion-button expand="block" fill="outline" (click)="login()">Login</ion-button>
+          <ion-button expand="block" fill="outline" (click)="login()">{{"LOGIN"|translate}}</ion-button>
         </ion-col>
         <ion-col sizeLg="4" sizeMd="12"></ion-col>
       </ion-row>
@@ -37,12 +37,12 @@
     <ion-row>
       <ion-col sizeLg="4" sizeMd="12"></ion-col>
       <ion-col sizeLg="2" class="ion-text-start">
-        <ion-button fill="clear">forget password?</ion-button>
+        <ion-button fill="clear" (click)="forgetPasswwordEvent()">{{"FORGET_PASSWORD"|translate}}</ion-button>
       </ion-col>
       <ion-col sizeLg="2" class="ion-text-end">
         <ion-toggle [(ngModel)]="toggled" color="primary" (ionChange)="onLangChange()"></ion-toggle>
         <div>
-          <ion-label> {{toggled?'English':'عربي'}}</ion-label>
+          <ion-label> {{toggled?'عربي':'English'}}</ion-label>
         </div>
       </ion-col>
       <ion-col sizeLg="4" sizeMd="12"></ion-col>

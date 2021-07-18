@@ -45,7 +45,7 @@ export class CategoryPage implements OnInit ,AfterViewInit {
         this.authToken = await readStorage('authData');
         this.empName = this.authToken.fullnameEn;
         this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
-          console.log(data);
+
           this.dataSource.data = data;
           loadingElmnt.dismiss();
         },error=>{

@@ -22,11 +22,6 @@ export class ProfileService {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    console.log(token);
-    console.log(body);
-    console.log(email);
-    console.log(oldpassword);
-    console.log(newpassword);
     return this.http.put<SysOwnerModel>(
       `${environment.backendUrl}/${this.url}/${email}/${oldpassword}/${newpassword}`,
       body,

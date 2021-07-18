@@ -67,5 +67,9 @@
   "COMPANY_NAME_AR": "Company Name Ar",
   "COMPANY_NAME_EN": "Company Name En",
   "CONTACT_PERSON_NAME": "Contact Person",
-  "VIEW": "View"
+  "VIEW": "View",
+  "FORGET_PASSWORD":"Forget password?",
+  "LOGIN":"Log In",
+  "PASSWORD":"Password",
+  "USERNAME":"e-mail address"
 }
