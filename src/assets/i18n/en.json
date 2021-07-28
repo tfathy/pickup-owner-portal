@@ -71,5 +71,8 @@
   "FORGET_PASSWORD":"Forget password?",
   "LOGIN":"Log In",
   "PASSWORD":"Password",
-  "USERNAME":"e-mail address"
+  "USERNAME":"e-mail address",
+  "SUBSCRIPTION_REQ_DETAIL":"Subscription Request Detail",
+  "ACCEPT_REQUEST":"Accept",
+  "REJECT_REQUEST":"Reject"
 }

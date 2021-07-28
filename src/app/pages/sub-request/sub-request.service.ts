@@ -21,4 +21,19 @@ export class SubRequestService {
       { headers: headerInfo }
     );
   }
+/// add method find  n=only new subscription requests (Status=E or R)
+  updateStatus(
+    token: string,
+    model: SubscriptionRequestModel,
+    id
+  ): Observable<SubscriptionRequestModel> {
+    const headerInfo = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.http.put<SubscriptionRequestModel>(
+      `${environment.backendUrl}/${this.url}/${id}`,
+      model,
+      { headers: headerInfo }
+    );
+  }
 }
