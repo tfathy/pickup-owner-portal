@@ -60,7 +60,7 @@ export class SubRequestPage implements OnInit, AfterViewInit {
         loadingElmnt.present();
         this.authToken = await readStorage('authData');
         this.empName = this.authToken.fullnameEn;
-        this.service.findAll('Bearer ' + this.authToken.token).subscribe(
+        this.service.findAllNew('Bearer ' + this.authToken.token).subscribe(
           (data) => {
             console.log(data);
             this.dataSource.data = data;
@@ -98,7 +98,7 @@ export class SubRequestPage implements OnInit, AfterViewInit {
       });
   }
   doRefresh() {
-    this.service.findAll('Bearer ' + this.authToken.token).subscribe((data) => {
+    this.service.findAllNew('Bearer ' + this.authToken.token).subscribe((data) => {
       console.log(data);
       this.dataSource.data = data as SubscriptionRequestModel[];
     });

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="warning">
     <ion-buttons slot="start">
-      <ion-title>{{"SUBSCRIPTION_REQ_DETAIL"|translate}}</ion-title>
+      <ion-button *ngIf="model.status==='R'" (click)="delete()">{{"DELETE"|translate}}</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button (click)="close()">{{"CLOSE"|translate}}</ion-button>

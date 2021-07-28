@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatRow } from '@angular/material/table';
+
 import {
   AlertController,
   LoadingController,
@@ -39,7 +39,18 @@ export class SubRequestComponent implements OnInit {
             text: 'Yes',
             handler: (onYes) => {
               // update thee request status, and create a user for the sp
-              this.modalCtrl.dismiss({ accepted: true });
+              this.model.status = 'S';
+              this.service
+                .updateStatus(
+                  'Bearer ' + this.token.token,
+                  this.model,
+                  this.model.id
+                )
+                .subscribe((data) => {
+                  this.modalCtrl.dismiss({ accepted: true });
+                },error=>{
+                  console.log(error);
+                });
             },
           },
           { text: 'No', role: 'cancel' },
@@ -68,14 +79,21 @@ export class SubRequestComponent implements OnInit {
                   loadingElmnt.present();
                   this.model.status = 'R';
                   this.service
-                    .updateStatus('Bearer '+this.token.token, this.model, this.model.id)
-                    .subscribe((data) => {
-                      loadingElmnt.dismiss();
-                      this.modalCtrl.dismiss({ accepted: false });
-                    },error=>{
-                      loadingElmnt.dismiss();
-                      console.log(error);
-                    });
+                    .updateStatus(
+                      'Bearer ' + this.token.token,
+                      this.model,
+                      this.model.id
+                    )
+                    .subscribe(
+                      (data) => {
+                        loadingElmnt.dismiss();
+                        this.modalCtrl.dismiss({ accepted: false });
+                      },
+                      (error) => {
+                        loadingElmnt.dismiss();
+                        console.log(error);
+                      }
+                    );
                 });
             },
           },
@@ -87,6 +105,27 @@ export class SubRequestComponent implements OnInit {
       })
       .then((alertElement) => {
         alertElement.present();
+      });
+  }
+  delete() {
+    this.loadingCtrl
+      .create({
+        message: 'please wait ...',
+      })
+      .then((loadingElemnt) => {
+        loadingElemnt.present();
+        this.service
+          .deleteRequest('Bearer ' + this.token.token, this.model.id)
+          .subscribe(
+            (data) => {
+              loadingElemnt.dismiss();
+              this.modalCtrl.dismiss({ accepted: false });
+            },
+            (error) => {
+              loadingElemnt.dismiss();
+              console.log(error);
+            }
+          );
       });
   }
   close() {

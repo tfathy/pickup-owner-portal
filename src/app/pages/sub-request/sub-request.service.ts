@@ -21,7 +21,18 @@ export class SubRequestService {
       { headers: headerInfo }
     );
   }
-/// add method find  n=only new subscription requests (Status=E or R)
+  /// add method find  n=only new subscription requests (Status=E or R)
+  //new
+  findAllNew(token: string): Observable<SubscriptionRequestModel[]> {
+    const headerInfo = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.http.get<SubscriptionRequestModel[]>(
+      `${environment.backendUrl}/${this.url}/new`,
+      { headers: headerInfo }
+    );
+  }
+
   updateStatus(
     token: string,
     model: SubscriptionRequestModel,
@@ -33,6 +44,16 @@ export class SubRequestService {
     return this.http.put<SubscriptionRequestModel>(
       `${environment.backendUrl}/${this.url}/${id}`,
       model,
+      { headers: headerInfo }
+    );
+  }
+
+  deleteRequest(token: string, id): Observable<string> {
+    const headerInfo = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.http.delete<string>(
+      `${environment.backendUrl}/${this.url}/${id}/${id}`,
       { headers: headerInfo }
     );
   }
