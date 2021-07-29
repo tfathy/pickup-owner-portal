@@ -24,6 +24,7 @@ import { ItemServiceComponent } from '../pages/item-service/item-service/item-se
 import { EmployeeComponent } from '../pages/employee/employee/employee.component';
 import { UsersComponent } from '../pages/users/users/users.component';
 import { SubRequestComponent } from '../pages/sub-request/sub-request/sub-request.component';
+import { SpComponent } from '../pages/sub-mgt/sp/sp.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SubRequestComponent } from '../pages/sub-request/sub-request/sub-reques
     ItemServiceComponent,
     EmployeeComponent,
     UsersComponent,
-    SubRequestComponent
+    SubRequestComponent,
+    SpComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +77,8 @@ import { SubRequestComponent } from '../pages/sub-request/sub-request/sub-reques
     ItemServiceComponent,
     EmployeeComponent,
     UsersComponent,
-    SubRequestComponent
+    SubRequestComponent,
+    SpComponent
   ],
 })
 export class SharedModule {}

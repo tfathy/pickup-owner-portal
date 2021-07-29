@@ -13,7 +13,7 @@ export async function readStorage(key: string): Promise<any> {
 
 
 export function generatedRandomString(length) {
-  const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const characters ='0123456789';
     let result = '';
     const charactersLength = characters.length;
     for ( let i = 0; i < length; i++ ) {

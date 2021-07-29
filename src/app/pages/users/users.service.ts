@@ -32,7 +32,7 @@ export class UsersService {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    const tempPassword = generatedRandomString(6);
+    const tempPassword = generatedRandomString(4);
     body.password = tempPassword;
     return this.http.post<CreateUserModel>(
       `${environment.backendUrl}/${this.url}`,

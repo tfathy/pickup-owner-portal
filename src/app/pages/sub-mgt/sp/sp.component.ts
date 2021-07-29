@@ -1,30 +1,21 @@
-/* eslint-disable @typescript-eslint/member-ordering */
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
+import { SpModel } from 'src/app/shared/model/sp-model';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
-import { UomModel } from '../uom-model';
-import { UomService } from '../uom.service';
+import { SubMgtService } from '../sub-mgt.service';
 
 @Component({
-  selector: 'app-uom',
-  templateUrl: './uom.component.html',
-  styleUrls: ['./uom.component.scss'],
+  selector: 'app-sp',
+  templateUrl: './sp.component.html',
+  styleUrls: ['./sp.component.scss'],
 })
-export class UomComponent implements OnInit {
-  token: authToken;
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  @Input() model: UomModel;
+export class SpComponent implements OnInit {
+  @Input() model: SpModel;
   @Input() recordStatus: string;
-  constructor(
-    private modalCtrl: ModalController,
-    private loadingCtrl: LoadingController,
-    private service: UomService
-  ) {}
+  token: authToken;
+  constructor( private modalCtrl: ModalController,private loadingCtrl: LoadingController, private spService: SubMgtService) { }
 
-  async ngOnInit() {
-    this.token = await readStorage('authData');
-  }
-
+  async ngOnInit() {this.token = await readStorage('authData');}
   save() {
     this.loadingCtrl
       .create({
@@ -33,11 +24,12 @@ export class UomComponent implements OnInit {
       .then((loadingElement) => {
         loadingElement.present();
         if (this.recordStatus === 'insert') {
-          this.service
-            .create('Bearer ' + this.token.token, this.model)
+          this.spService
+            .createSp('Bearer ' + this.token.token, this.model)
             .subscribe(
               (data) => {
                 loadingElement.dismiss();
+                console.log(data);
                 this.modalCtrl.dismiss({
                   saved: true,
                 });
@@ -48,8 +40,8 @@ export class UomComponent implements OnInit {
               }
             );
         } else if (this.recordStatus === 'update') {
-          this.service
-            .update('Bearer ' + this.token.token, this.model, this.model.id)
+          this.spService
+            .updateSp('Bearer ' + this.token.token, this.model, this.model.id)
             .subscribe(
               (data) => {
                 loadingElement.dismiss();
@@ -70,14 +62,5 @@ export class UomComponent implements OnInit {
       saved: false,
     });
   }
-  disableRecord() {
-    this.model.activeFlag = 'N';
-    this.recordStatus = 'update';
-    this.save();
-  }
-  enableRecord() {
-    this.model.activeFlag = 'Y';
-    this.recordStatus = 'update';
-    this.save();
-  }
+
 }

@@ -38,7 +38,6 @@ export class SubRequestComponent implements OnInit {
           {
             text: 'Yes',
             handler: (onYes) => {
-              // update thee request status, and create a user for the sp
               this.model.status = 'S';
               this.service
                 .updateStatus(
