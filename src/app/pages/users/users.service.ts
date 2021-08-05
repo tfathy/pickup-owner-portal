@@ -3,7 +3,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { generatedRandomString } from 'src/app/shared/shared-util';
 import { environment } from 'src/environments/environment';
 import { CreateUserModel } from './create-user-model';
 import { SysOwnerUserModel } from './sys-owner-users-model';
@@ -32,8 +31,9 @@ export class UsersService {
     const headerInfo = new HttpHeaders({
       Authorization: token,
     });
-    const tempPassword = generatedRandomString(4);
-    body.password = tempPassword;
+    console.log('***************UsersService***************');
+    console.log(body);
+    console.log('***************UsersService***************');
     return this.http.post<CreateUserModel>(
       `${environment.backendUrl}/${this.url}`,
       body,

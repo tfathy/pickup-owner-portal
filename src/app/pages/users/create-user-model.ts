@@ -3,7 +3,7 @@ import { EmployeeModel } from '../employee/employee-model';
 export class CreateUserModel {
   constructor(
     public hrEmployee?: EmployeeModel,
-    public spModel?: SpModel,
+    public sp?: SpModel,
     public email?: string,
     public password?: string,
     public userType?: string,

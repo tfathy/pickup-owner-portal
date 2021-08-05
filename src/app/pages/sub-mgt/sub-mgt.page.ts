@@ -14,7 +14,7 @@ import {
 } from '@ionic/angular';
 import { LoginPageService } from 'src/app/login/login-page.service';
 import { SpModel } from 'src/app/shared/model/sp-model';
-import { authToken, readStorage } from 'src/app/shared/shared-util';
+import { authToken, generatedRandomString, readStorage } from 'src/app/shared/shared-util';
 import { SysOwnerModel } from '../profile/sys-owner-model';
 import { CreateUserModel } from '../users/create-user-model';
 import { UsersService } from '../users/users.service';
@@ -41,6 +41,7 @@ export class SubMgtPage implements OnInit, AfterViewInit {
   ];
   dataSource = new MatTableDataSource<SpModel>(ELEMENT_DATA);
   selection = new SelectionModel<SpModel>(false, []);
+  selectedSp: SpModel;
   constructor(
     private modalCtrl: ModalController,
     private spService: SubMgtService,
@@ -63,7 +64,7 @@ export class SubMgtPage implements OnInit, AfterViewInit {
         this.empName = this.authToken.fullnameEn;
         this.spService.findAll('Bearer ' + this.authToken.token).subscribe(
           (data) => {
-            console.log(data);
+
             this.dataSource.data = data;
             loadingElmnt.dismiss();
           },
@@ -82,8 +83,8 @@ export class SubMgtPage implements OnInit, AfterViewInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
   create() {
-    const owner = new SysOwnerModel(1);
-    const body = new SpModel(owner);
+   // const owner = new SysOwnerModel(1);
+    const body = new SpModel(1);
     body.accountStatus = 'NEW';
     this.modalCtrl
       .create({
@@ -120,19 +121,23 @@ export class SubMgtPage implements OnInit, AfterViewInit {
   }
 
   async manageAccount(body: SpModel) {
+    this.selectedSp = body;
+    console.log('this.selectedSp = ');
+    console.log(this.selectedSp);
+    console.log('*****end ');
     let buttonsProps = [];
 
-    const statusNewButtons = this.generateCreateNewAccountButtons(body);
+    const statusNewButtons = this.generateCreateNewAccountButtons();
 
-    const statusEnabledButtons = this.generateUpdateEnabledAccountButtons(body);
+    const statusEnabledButtons = this.generateUpdateEnabledAccountButtons(this.selectedSp);
     const statusDisabledButtons =
-      this.generateUpdateDisabledAccountButtons(body);
+      this.generateUpdateDisabledAccountButtons(this.selectedSp);
 
-    if (body.accountStatus === 'NEW') {
+    if (this.selectedSp.accountStatus === 'NEW') {
       buttonsProps = statusNewButtons;
-    } else if (body.accountStatus === 'VALID') {
+    } else if (this.selectedSp.accountStatus === 'VALID') {
       buttonsProps = statusEnabledButtons;
-    } else if (body.accountStatus === 'HOLD') {
+    } else if (this.selectedSp.accountStatus === 'HOLD') {
       buttonsProps = statusDisabledButtons;
     }
     await this.actionSheet
@@ -164,12 +169,9 @@ export class SubMgtPage implements OnInit, AfterViewInit {
         toastCtrl.present();
       });
   }
-  private getNewCreatedUser(body): CreateUserModel {
-    const userModel = new CreateUserModel();
-    userModel.spModel = body;
-    userModel.userType = 'SP';
-    userModel.accountStatus = 'VERIFIED';
-    userModel.email = body.subscribtionRequest.contactPersonEmail;
+  private getNewCreatedUser(): CreateUserModel {
+    const tempPassword = generatedRandomString(4);
+    const userModel = new CreateUserModel(null,this.selectedSp,this.selectedSp.contactPersonEmail,tempPassword,'SP','VERIFIED');
     return userModel;
   }
   private showAlert(msg: string) {
@@ -182,12 +184,12 @@ export class SubMgtPage implements OnInit, AfterViewInit {
         alertElmnt.present();
       });
   }
-  private generateCreateNewAccountButtons(body) {
-    const userModel = this.getNewCreatedUser(body);
+  private generateCreateNewAccountButtons() {
+    const userModel: CreateUserModel = this.getNewCreatedUser();
     return [
       {
         text: 'Create User',
-        icon: 'trash',
+        icon: 'person-add-outline',
         handler: () => {
           // sigh up
           this.loadingCtrl
@@ -198,17 +200,17 @@ export class SubMgtPage implements OnInit, AfterViewInit {
                 .createUser('Bearer ' + this.authToken.token, userModel)
                 .subscribe(
                   (userData) => {
-                    body.accountStatus = 'VALID';
+                    this.selectedSp.accountStatus = 'VALID';
                     this.spService
-                      .updateSp('Bearer ' + this.authToken.token, body, body.id)
+                      .updateSp('Bearer ' + this.authToken.token, this.selectedSp, this.selectedSp.id)
                       .subscribe(
                         (spData) => {
                           loadingElement.dismiss();
                           this.showAlert(
                             'New Account created Successfully.Password is sent to email: ' +
-                              body.subscribtionRequest.contactPersonEmail
+                            this.selectedSp.contactPersonEmail
                           );
-                          console.log(userData);
+
                         },
                         (error) => {
                           loadingElement.dismiss();
@@ -250,7 +252,7 @@ export class SubMgtPage implements OnInit, AfterViewInit {
     })
     .then((loadingElmnt) => {
       loadingElmnt.present();
-      this.loginPageService.checkUserExists(body.subscribtionRequest.contactPersonEmail).subscribe(
+      this.loginPageService.checkUserExists(body.contactPersonEmail).subscribe(
         (resData) => {
           //send new password
           this.showAlert(
