@@ -9,7 +9,17 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-grid>
+  <ion-segment (ionChange)="onSegmentChanged($event)" color="secondary" scrollable="true" value="info">
+    <ion-segment-button value="info">
+      <ion-label>{{"REQUEST_INFO"|translate}}</ion-label>
+      <ion-icon name="newspaper-sharp"></ion-icon>
+    </ion-segment-button>
+    <ion-segment-button value="attachments">
+      <ion-label>{{"ATTACHMENTS"|translate}}</ion-label>
+      <ion-icon name="copy"></ion-icon>
+    </ion-segment-button>
+  </ion-segment>
+  <ion-grid  *ngIf="segmentModel==='info'">
     <ion-row>
       <ion-col   sizeSm="12">
         <ion-item>
@@ -63,5 +73,13 @@
       </ion-col>
     </ion-row>
 
+  </ion-grid>
+
+  <ion-grid *ngIf="segmentModel==='attachments'">
+<ion-row>
+  <ion-col *ngFor="let f of attachments" size="12">
+    <ion-img [src]="downloadUrl+'/'+f.fileName"></ion-img>
+  </ion-col>
+</ion-row>
   </ion-grid>
 </ion-content>

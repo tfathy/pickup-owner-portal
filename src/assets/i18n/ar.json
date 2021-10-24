@@ -74,5 +74,7 @@
   "USERNAME":"البريد الالكتروني",
   "SUBSCRIPTION_REQ_DETAIL":"تفاصيل طلب الاشتراك",
   "ACCEPT_REQUEST":"قبول الطلب",
-  "REJECT_REQUEST":"رفض الطلب"
+  "REJECT_REQUEST":"رفض الطلب",
+  "REQUEST_INFO":"بيانات الطلب",
+  "ATTACHMENTS":"المرفقات"
 }

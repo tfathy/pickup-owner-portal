@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://localhost:802'
+  backendUrl: 'http://localhost:802',
+  fileDownloadUrl:'http://localhost:802/sys-owner-app/file/download'
 };
 
 /*

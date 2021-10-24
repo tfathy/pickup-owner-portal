@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController, LoadingController } from '@ionic/angular';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
+import { generatedRandomString } from 'src/app/shared/shared-utils';
 import { EmployeeModel } from '../../employee/employee-model';
 import { CreateUserModel } from '../create-user-model';
 import { UsersService } from '../users.service';
@@ -35,6 +36,8 @@ export class UsersComponent implements OnInit {
       .then((loadingElement) => {
         loadingElement.present();
         if (this.recordStatus === 'insert') {
+          this.model.password = generatedRandomString(5);
+          console.log(this.model.password);
           this.service
             .createUser('Bearer ' + this.token.token, this.model)
             .subscribe(

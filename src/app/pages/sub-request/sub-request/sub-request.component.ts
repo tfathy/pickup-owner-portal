@@ -5,7 +5,9 @@ import {
   LoadingController,
   ModalController,
 } from '@ionic/angular';
+import { SubScriptionReqAttachmentsModel } from 'src/app/shared/model/sub-request-attachments-model';
 import { authToken, readStorage } from 'src/app/shared/shared-util';
+import { environment } from 'src/environments/environment';
 import { SubscriptionRequestModel } from '../sub-request-model';
 import { SubRequestService } from '../sub-request.service';
 
@@ -17,6 +19,9 @@ import { SubRequestService } from '../sub-request.service';
 export class SubRequestComponent implements OnInit {
   @Input() model: SubscriptionRequestModel;
   token: authToken;
+  downloadUrl=`${environment.fileDownloadUrl}`;
+  attachments: SubScriptionReqAttachmentsModel[] = [];
+  segmentModel = 'info';
   constructor(
     private modalCtrl: ModalController,
     private loadingCtrl: LoadingController,
@@ -26,8 +31,30 @@ export class SubRequestComponent implements OnInit {
 
   async ngOnInit() {
     this.token = await readStorage('authData');
+    this.loadingCtrl
+      .create({
+        message: 'loading..please wait',
+      })
+      .then((loadingElmnt) => {
+        loadingElmnt.present();
+        this.service
+          .viewAttachments('Bearer ' + this.token.token, this.model.id)
+          .subscribe(
+            (resData) => {
+              console.log(resData);
+              this.attachments = resData;
+              loadingElmnt.dismiss();
+            },
+            (err) => {
+              loadingElmnt.dismiss();
+              console.log(err);
+            }
+          );
+      });
   }
-
+  onSegmentChanged(event) {
+    this.segmentModel = event.detail.value;
+  }
   acceptRequest() {
     this.alertCtrl
       .create({
@@ -45,11 +72,14 @@ export class SubRequestComponent implements OnInit {
                   this.model,
                   this.model.id
                 )
-                .subscribe((data) => {
-                  this.modalCtrl.dismiss({ accepted: true });
-                },error=>{
-                  console.log(error);
-                });
+                .subscribe(
+                  (data) => {
+                    this.modalCtrl.dismiss({ accepted: true });
+                  },
+                  (error) => {
+                    console.log(error);
+                  }
+                );
             },
           },
           { text: 'No', role: 'cancel' },

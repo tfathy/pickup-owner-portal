@@ -2,6 +2,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SubScriptionReqAttachmentsModel } from 'src/app/shared/model/sub-request-attachments-model';
 import { environment } from 'src/environments/environment';
 import { SubscriptionRequestModel } from './sub-request-model';
 
@@ -54,6 +55,19 @@ export class SubRequestService {
     });
     return this.http.delete<string>(
       `${environment.backendUrl}/${this.url}/${id}/${id}`,
+      { headers: headerInfo }
+    );
+  }
+
+  viewAttachments(
+    token: string,
+    subRequestId: number
+  ): Observable<SubScriptionReqAttachmentsModel[]> {
+    const headerInfo = new HttpHeaders({
+      Authorization: token,
+    });
+    return this.http.get<SubScriptionReqAttachmentsModel[]>(
+      `${environment.backendUrl}/sys-owner-app/public/sub-request-attach/${subRequestId}`,
       { headers: headerInfo }
     );
   }

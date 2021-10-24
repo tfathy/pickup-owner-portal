@@ -74,5 +74,7 @@
   "USERNAME":"e-mail address",
   "SUBSCRIPTION_REQ_DETAIL":"Subscription Request Detail",
   "ACCEPT_REQUEST":"Accept",
-  "REJECT_REQUEST":"Reject"
+  "REJECT_REQUEST":"Reject",
+  "REQUEST_INFO":"Request Information",
+  "ATTACHMENTS":"Attachments"
 }
